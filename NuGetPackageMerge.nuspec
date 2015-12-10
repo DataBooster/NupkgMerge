@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata minClientVersion="2.7">
+		<id>NupkgMerge</id>
+		<version>$version$</version>
+		<title>$title$</title>
+		<authors>$author$</authors>
+		<owners>http://nupkgmerge.codeplex.com/</owners>
+		<licenseUrl>http://nupkgmerge.codeplex.com/license</licenseUrl>
+		<projectUrl>http://nupkgmerge.codeplex.com/</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>$description$</description>
+		<releaseNotes>http://nupkgmerge.codeplex.com/</releaseNotes>
+		<copyright>Copyright 2015 Abel Cheng</copyright>
+		<tags>nuget packaging nupkg packages merge tool command line</tags>
+		<developmentDependency>true</developmentDependency>
+	</metadata>
+	<files>
+		<file src="bin\Release\*.dll" target="tools" />
+	</files>
+</package>

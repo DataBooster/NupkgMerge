@@ -10,13 +10,13 @@ namespace NuGetPackageMerge
 {
 	class CmdArguments
 	{
-		[Option('p', "primary", Required = true, HelpText = "\tSpecifies primary .nupkg file.")]
+		[Option('p', "primary", Required = true, HelpText = "\tSpecifies the primary .nupkg file.")]
 		public string PrimaryNupkg { get; set; }
 
-		[Option('s', "second", Required = true, HelpText = "\tSpecifies second .nupkg file.")]
+		[Option('s', "second", Required = true, HelpText = "\tSpecifies the second .nupkg file.")]
 		public string SecondNupkg { get; set; }
 
-		[Option('o', "out", Required = true, HelpText = "\tSpecifies output .nupkg file name.")]
+		[Option('o', "out", Required = true, HelpText = "\tSpecifies the output .nupkg filename.")]
 		public string OutputNupkg { get; set; }
 
 		[ParserState]
@@ -31,38 +31,20 @@ namespace NuGetPackageMerge
 
 		public bool Parse(string[] args)
 		{
-			return Parser.Default.ParseArguments(NormalizeArguments(args).ToArray(), this);
+			NormalizeArguments(args);
+			return Parser.Default.ParseArguments(args, this);
 		}
 
-		private static char[] _nameValueSeparators = new char[] { ':', '=' };
-
-		private static IEnumerable<string> NormalizeArguments(string[] args)
+		private static void NormalizeArguments(string[] args)
 		{
-			string arg;
-			int delimit;
-
 			for (int i = 0; i < args.Length; i++)
 			{
-				arg = args[i];
+				if (args[i].StartsWith("/"))
+					args[i] = "-" + args[i].TrimStart('/');
 
-				if (arg.StartsWith("/"))
-					arg = "-" + arg.TrimStart('/');
-
-				if (arg.StartsWith("-") && arg.Length > 2)
-				{
-					if (arg[1] != '-')
-						arg = "-" + arg;
-
-					delimit = arg.IndexOfAny(_nameValueSeparators, 2);
-					if (delimit > 1 && delimit < arg.Length - 1)
-					{
-						yield return arg.Substring(0, delimit);
-						yield return arg.Substring(delimit + 1);
-						continue;
-					}
-				}
-
-				yield return arg;
+				if (args[i].StartsWith("-") && args[i].Length > 2)
+					if (args[i][1] != '-' && args[i][2] != '"')
+						args[i] = "-" + args[i];
 			}
 		}
 	}

@@ -2,24 +2,41 @@
 // Repository: https://nupkgmerge.codeplex.com/
 
 using System;
-using CommandLine;
 
 namespace NuGetPackageMerge
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static int Main(string[] args)
 		{
 			CmdArguments cmdArguments = new CmdArguments();
 
-			if (cmdArguments.Parse(args))
+			try
 			{
-				NupkgMerge nupkgMerge = new NupkgMerge(cmdArguments.PrimaryNupkg);
-				nupkgMerge.Merge(cmdArguments.SecondNupkg);
-				nupkgMerge.Save(cmdArguments.OutputNupkg);
+				if (cmdArguments.Parse(args))
+				{
+					NupkgMerge nupkgMerge = new NupkgMerge(cmdArguments.PrimaryNupkg);
+					nupkgMerge.Merge(cmdArguments.SecondNupkg);
+					nupkgMerge.Save(cmdArguments.OutputNupkg);
 
-				Console.WriteLine("Successfully merged '{0}' with '{1}' into new package '{2}'.",
-					cmdArguments.PrimaryNupkg, cmdArguments.SecondNupkg, cmdArguments.OutputNupkg);
+					Console.WriteLine("Successfully merged '{0}' with '{1}' into '{2}'.",
+						cmdArguments.PrimaryNupkg, cmdArguments.SecondNupkg, cmdArguments.OutputNupkg);
+
+					return 0;
+				}
+				else
+					return 1;
+			}
+			catch (Exception e)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine(e.Message ?? "Failed!");
+
+				if (e.InnerException != null && e.InnerException.Message != null)
+					Console.WriteLine(e.InnerException.Message);
+
+				Console.ResetColor();
+				return -1;
 			}
 		}
 	}
