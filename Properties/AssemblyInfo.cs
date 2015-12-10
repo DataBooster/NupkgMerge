@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Abel Cheng")]
 [assembly: AssemblyProduct("NuGetPackageMerge")]
-[assembly: AssemblyCopyright("Copyright Abel Cheng 2015")]
+[assembly: AssemblyCopyright("Copyright 2015 Abel Cheng")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
