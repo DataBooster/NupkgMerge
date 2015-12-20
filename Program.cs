@@ -30,10 +30,10 @@ namespace NuGetPackageMerge
 			catch (Exception e)
 			{
 				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine(e.Message ?? "Failed!");
+				Console.Error.WriteLine(e.Message ?? "Failed!");
 
 				if (e.InnerException != null && e.InnerException.Message != null)
-					Console.WriteLine(e.InnerException.Message);
+					Console.Error.WriteLine(e.InnerException.Message);
 
 				Console.ResetColor();
 				return -1;
