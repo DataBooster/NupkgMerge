@@ -11,7 +11,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>$description$</description>
 		<releaseNotes>http://nupkgmerge.codeplex.com/</releaseNotes>
-		<copyright>Copyright 2015 Abel Cheng</copyright>
+		<copyright>Copyright 2015-2017 Abel Cheng</copyright>
 		<tags>nuget packaging nupkg packages merge tool command line</tags>
 		<developmentDependency>true</developmentDependency>
 	</metadata>
