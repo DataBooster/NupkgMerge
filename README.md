@@ -15,5 +15,3 @@ This is a utility for merging two NuGet packages _(two .NET Framework Versions)_
 To merge more than two packages into a single package, please execute NupkgMerge in iterations. _(Pass the previous output file into the next iteration's primary file argument)_
 
 For source package created from a **csproj** or **vbproj** file, the auto-generated flat list of package dependencies will be **grouped** into a corresponding targetFramework group _(if the source package supports a unique .NET Framework)_ while merging.
-
-.
