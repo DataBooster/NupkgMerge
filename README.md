@@ -1,14 +1,14 @@
 This is a utility for merging two NuGet packages _(two .NET Framework Versions)_ into a single nupkg package _(Multi-TargetFrameworks)_.
 
-### +Usage+
+### Usage
 
-**NupkgMerge**.exe **-p**{"[rimary](rimary)"} "+primary.nupkg+" **-s**{"[econd](econd)"} "+second.nupkg+" **-o**{"[ut](ut)"} "+output.nupkg+"
+**NupkgMerge**.exe **-p**[rimary] "primary.nupkg" **-s**[econd] "second.nupkg" **-o**[ut] "output.nupkg"
 
-* **-P**{"[rimary](rimary)"}
+* **-P**[rimary]
 : Specifies the primary nupkg file to merge from. _(Higher Priority)_
-* **-S**{"[econd](econd)"}
+* **-S**[econd]
 : Specifies the second nupkg file to merge from. _(Lower Priority)_ Only those items_(metadata/files)_ which are not in the primary nupkg file will be included in the output nupkg file.
-* **-O**{"[ut](ut)"}
+* **-O**[ut]
 : Specifies the file name of new nupkg package for the merged output.
 
 
